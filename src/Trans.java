@@ -98,10 +98,16 @@ public class Trans {
 		));
 		scrollPane.setViewportView(tblCust);
 		
+		
 		btnCreate = new JButton("Submit");
 		btnCreate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				int custID = (int) tblCust.getModel().getValueAt(tblCust.getSelectedRow(), 0);
+				int row = tblCust.getSelectedRow();
+				int custID = 0;
+				if(row != -1)
+					custID = (int) tblCust.getModel().getValueAt(tblCust.getSelectedRow(), 0);
+				else
+					JOptionPane.showMessageDialog(null, "Please select a customer.");
 				
 				Reciept r = new Reciept();
 				String tans = r.createTransactionReciept(agentID, propID, custID);
@@ -111,7 +117,14 @@ public class Trans {
 				
 				
 				
-			String insert = "INSERT INTO `vrcsoftware`.`transaction` (`Trans_ID`, `Trans_Date`, `Price`, `Proper_ID`, `Agent_ID`, `Cust_ID`, `Commition_Slip`, `Transaction_Slip`) VALUES (NULL, '" + LocalDate.now().toString() + "', '" + price  + "', '" + propID + "', '" + agentID  + "', '" + custID + "','" + CommisionSlip + "', '" + tans + "');";
+			String insert = "INSERT INTO `vrcsoftware`.`transaction` " + 
+			"(`Trans_ID`, `Trans_Date`, `Price`, `Proper_ID`, " + 
+					"`Agent_ID`, `Cust_ID`, `Commition_Slip`, `Transaction_Slip`) " + 
+			"VALUES (NULL, '" + LocalDate.now().toString() + 
+			"', '" + price  + "', '" + propID + "', '" + 
+			agentID  + "', '" + custID + "','" + 
+			CommisionSlip + "', '" + tans + "');";
+			if(custID != 0){
 				try{
 					stat.executeUpdate(insert);
 					JOptionPane.showMessageDialog(null, "Record Added");
@@ -121,15 +134,17 @@ public class Trans {
 				} catch(SQLException se){
 					System.out.println(se);
 				}
+				
 				try{
 					if (Desktop.isDesktopSupported()) {
 					       Desktop.getDesktop().open(new File(CommisionSlip));
 					       Desktop.getDesktop().open(new File(tans));
-					     }
+					       }
 					   } catch (IOException ioe) {
 					     ioe.printStackTrace();
 					  
 					   }
+			}
 			}
 		});
 		btnCreate.setBounds(10, 262, 89, 23);

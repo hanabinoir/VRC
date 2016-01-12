@@ -1,0 +1,23 @@
+
+
+Version:	3.8
+CmdLine:	C:\Users\Yoeng\Documents\Douglas College\Projects\VRC\VRC.exe --l4j-debug
+WOW64:		yes
+Working dir:	C:\Users\Yoeng\Documents\Douglas College\Projects\VRC\.
+64-bit search:	SOFTWARE\JavaSoft\Java Runtime Environment...
+Check:		SOFTWARE\JavaSoft\Java Runtime Environment\1.8
+Ignore:		1.8
+Check:		SOFTWARE\JavaSoft\Java Runtime Environment\1.8.0_25
+Check launcher:	C:\Program Files\Java\jre1.8.0_25\bin\javaw.exe (OK)
+Match:		1.8.0_25
+64-bit search:	SOFTWARE\JavaSoft\Java Development Kit...
+Check:		SOFTWARE\JavaSoft\Java Development Kit\1.8
+Ignore:		1.8
+Check:		SOFTWARE\JavaSoft\Java Development Kit\1.8.0_25
+Ignore:		1.8.0_25
+Runtime used:	1.8.0_25 (64-bit)
+Substitute:	1.8.0 = 
+Launcher:	C:\Program Files\Java\jre1.8.0_25\bin\javaw.exe
+Launcher args:	-Denv.1.8.0="" -jar "C:\Users\Yoeng\Documents\Douglas College\Projects\VRC\VRC.exe"
+Args length:	83/32768 chars
+Exit code:	0
